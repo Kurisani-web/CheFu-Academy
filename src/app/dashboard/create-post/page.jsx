@@ -30,6 +30,7 @@ export default function CreatePostPage() {
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   console.log(formData);
 
   const handleUpdloadImage = async () => {
@@ -71,6 +72,7 @@ export default function CreatePostPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch('/api/post/create', {
         method: 'POST',
@@ -85,6 +87,7 @@ export default function CreatePostPage() {
       const data = await res.json();
       if (!res.ok) {
         setPublishError(data.message);
+        setLoading(false);
         return;
       }
       if (res.ok) {
@@ -93,6 +96,7 @@ export default function CreatePostPage() {
       }
     } catch (error) {
       setPublishError('Something went wrong');
+      setLoading(false);
     }
   };
 
@@ -176,8 +180,8 @@ export default function CreatePostPage() {
               setFormData({ ...formData, content: value });
             }}
           />
-          <Button type='submit' gradientDuoTone='purpleToPink'>
-            Publish
+          <Button type='submit' gradientDuoTone='purpleToPink' disabled={loading} >
+            {loading ? 'Publishing...' : 'Publish'}
           </Button>
         </form>
       </div>
