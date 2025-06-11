@@ -4,11 +4,11 @@ export default function About() {
         <div className='max-w-2xl mx-auto p-3 text-center'>
           <div>
             <h1 className='text-3xl font font-semibold text-center my-7'>
-              About CheFu Academy Blog
+              About CheFu Academy
             </h1>
             <div className='text-md text-gray-500 flex flex-col gap-6'>
               <p>
-                Welcome to CheFu Academy Blog! Created by Sahand Ghavidel, this blog
+                Welcome to CheFu Academy! Created by Sahand Ghavidel, this blog
                 serves as a personal platform to share his insights and ideas with
                 the world. Sahand is an enthusiastic developer who enjoys writing
                 about technology, coding, and a variety of related topics.
