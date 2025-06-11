@@ -33,6 +33,22 @@ export default function CreatePostPage() {
   const [loading, setLoading] = useState(false);
   console.log(formData);
 
+  const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],   // Headers 1-6 and normal text
+    ['bold', 'italic', 'underline', 'strike'], // Bold, italic, underline, strikethrough
+    ['blockquote', 'code-block'],               // Blockquote and code block
+    [{ list: 'ordered' }, { list: 'bullet' }], // Ordered and bullet lists
+    [{ indent: '-1' }, { indent: '+1' }],      // Outdent and indent
+    [{ direction: 'rtl' }],                     // Text direction (right to left)
+    [{ size: ['small', false, 'large', 'huge'] }], // Font size options
+    [{ color: [] }, { background: [] }],       // Text color and background color
+    [{ font: [] }],                             // Font family dropdown
+    ['link', 'image', 'video'],                 // Links, images, and videos
+    ['clean'],                                  // Remove formatting button
+  ],
+};
+
   const handleUpdloadImage = async () => {
     try {
       if (!file) {
@@ -172,6 +188,7 @@ export default function CreatePostPage() {
           )}
 
           <ReactQuill
+            modules={modules}
             theme='snow'
             placeholder='Write something...'
             className='h-72 mb-12'
