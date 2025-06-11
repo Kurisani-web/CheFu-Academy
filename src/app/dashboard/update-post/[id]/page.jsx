@@ -29,6 +29,8 @@ export default function UpdatePost() {
   const router = useRouter();
   const pathname = usePathname();
   const postId = pathname.split('/').pop();
+  const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -94,6 +96,7 @@ export default function UpdatePost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch('/api/post/update', {
         method: 'PUT',
@@ -109,6 +112,7 @@ export default function UpdatePost() {
       const data = await res.json();
       if (!res.ok) {
         setPublishError(data.message);
+        setLoading(false);
         return;
       }
       if (res.ok) {
@@ -117,6 +121,7 @@ export default function UpdatePost() {
       }
     } catch (error) {
       setPublishError('Something went wrong');
+      setLoading(false);
     }
   };
 
@@ -204,8 +209,8 @@ export default function UpdatePost() {
               setFormData({ ...formData, content: value });
             }}
           />
-          <Button type='submit' gradientDuoTone='purpleToPink'>
-            Update
+          <Button disabled={loading} type='submit' gradientDuoTone='purpleToPink'>
+            {loading ? 'Updating...' : 'Update' }
           </Button>
           {publishError && (
             <Alert className='mt-5' color='failure'>
