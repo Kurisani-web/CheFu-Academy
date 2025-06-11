@@ -20,7 +20,7 @@ export default async function Home() {
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
         <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to CheFu Academy</h1>
         <p className='text-gray-500 text-xs sm:text-sm'>
-  At CheFu Academy, we&apos;re committed to empowering developers, tech enthusiasts, and lifelong learners through high-quality content and practical knowledge. Whether you're just starting your journey or looking to sharpen your skills, you’ll find something valuable here.
+  {"At CheFu Academy, we're committed to empowering developers, tech enthusiasts, and lifelong learners through high-quality content and practical knowledge. Whether you're just starting your journey or looking to sharpen your skills, you'll find something valuable here."}
 </p>
 
 <ul className='list-disc pl-4 text-gray-500 text-xs sm:text-sm space-y-1'>
