@@ -6,6 +6,7 @@ import ThemeCom from './components/ThemeCom';
 import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeModeScript } from 'flowbite-react';
 import Footer from './components/Footer';
+import Script from 'next/script';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,6 +30,12 @@ export default function RootLayout({ children }) {
       <html lang='en' suppressHydrationWarning>
         <head>
           <ThemeModeScript />
+          <Script
+            async
+            strategy="afterInteractive"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2568872335031834"
+            crossOrigin="anonymous"
+          />
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
