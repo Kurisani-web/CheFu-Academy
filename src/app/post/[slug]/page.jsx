@@ -2,6 +2,8 @@ import CallToAction from '@/app/components/CallToAction';
 import RecentPosts from '@/app/components/RecentPosts';
 import { Button } from 'flowbite-react';
 import Link from 'next/link';
+import DOMPurify from 'dompurify';
+
 export default async function PostPage({ params }) {
   let post = null;
   try {
@@ -50,11 +52,11 @@ export default async function PostPage({ params }) {
       </div>
       <div
         className='p-3 max-w-2xl mx-auto w-full post-content'
-        dangerouslySetInnerHTML={{ __html: post?.content }}
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post?.content) }}
       ></div>
-      <div className='max-w-4xl mx-auto w-full'>
+        {/*<div className='max-w-4xl mx-auto w-full'>
         <CallToAction />
-      </div>
+      </div>*/}
       <RecentPosts limit={3} />
     </main>
   );
